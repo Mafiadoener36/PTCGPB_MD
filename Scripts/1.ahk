@@ -5985,17 +5985,20 @@ GetEventRewards(frommain := true){
     ; This entire section is specific to First Anniversay Celebration SpecialMissions pt1
     failSafe := A_TickCount
     failSafeTime := 0
-    Loop{
-        adbClick_wbb(6, 465) ; used to scroll to other missions further left.
-        Sleep, 750
-        if (FindOrLoseImage(223, 179, 231, 187, , "FirstAnniversaryCelebration", 0, failSafeTime)){
-            break
-        }
-    }
+    ;Loop{
+    ;    adbClick_wbb(6, 465) ; used to scroll to other missions further left.
+    ;    Sleep, 750
+    ;    if (FindOrLoseImage(223, 179, 231, 187, , "FirstAnniversaryCelebration", 0, failSafeTime)){
+    ;        break
+    ;    }
+    ;}
+	adbClick_wbb(120, 465) ; used to click the middle mission button
 
     ; ====== Collect all rewards ======
     failSafe := A_TickCount
     failSafeTime := 0
+	failSafe2 := A_TickCount
+	failSafeTime2 := 0
     Loop{
         adbClick_wbb(172, 427) ;clicks complete all and ok
         Sleep, 1500
@@ -6009,6 +6012,20 @@ GetEventRewards(frommain := true){
             break
         }
         failSafeTime := (A_TickCount - failSafe) // 1000
+		
+			Delay(1)
+			if(FindOrLoseImage(233, 486, 272, 519, , "Skip", 0, failSafeTime2)) {
+				adbClick_wbb(239, 497)
+			} else if(FindOrLoseImage(120, 70, 150, 100, , "Next", 0, failSafeTime2)) {
+				adbClick_wbb(146, 494) ;146, 494
+			} else if(FindOrLoseImage(120, 70, 150, 100, , "Next2", 0, failSafeTime2)) {
+				adbClick_wbb(146, 494) ;146, 494
+			} else if(FindOrLoseImage(121, 465, 140, 485, , "ConfirmPack", 0, failSafeTime2)) {
+				break
+			} else {
+				;adbClick_wbb(146, 494) ;146, 494
+			} 
+		
     }
     GoToMain()
 }
