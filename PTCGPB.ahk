@@ -103,13 +103,13 @@ SetTitleMatchMode, 3
 
 OnError("ErrorHandler")
 
-githubUser := "kevnITG"
-   ,repoName := "PTCGPB"
-   ,localVersion := "v8.2.6"
+githubUser := "Mafiadoener36"
+   ,repoName := "PTCGPB_MD"
+   ,localVersion := "v8.2.6_M1"
    ,scriptFolder := A_ScriptDir
    ,zipPath := A_Temp . "\update.zip"
    ,extractPath := A_Temp . "\update"
-   ,intro := "Mega Rising"
+   ,intro := "MuMuV5"
 
 global GUI_WIDTH := 790
 global GUI_HEIGHT := 370
