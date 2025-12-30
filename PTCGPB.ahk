@@ -106,7 +106,7 @@ OnError("ErrorHandler")
 
 githubUser := "Mafiadoener36"
    ,repoName := "PTCGPB_MD"
-   ,localVersion := "v9.2.5.4"
+   ,localVersion := "v9.2.5.5"
    ,scriptFolder := A_ScriptDir
    ,zipPath := A_Temp . "\update.zip"
    ,extractPath := A_Temp . "\update"
@@ -3071,6 +3071,7 @@ KillAllScripts() {
 
    Return
 }
+
 
 
 
