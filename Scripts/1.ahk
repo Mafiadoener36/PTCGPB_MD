@@ -363,13 +363,7 @@ if(DeadCheck = 1 && deleteMethod != "Create Bots (13P)") {
     CreateStatusMessage("Account is stuck! Restarting and unfriending...")
     friended := true
     CreateStatusMessage("Stuck account still has friends. Unfriending accounts...")
-    FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000) 
-    if(setSpeed = 3)
-        FindImageAndClick(185, 177, 189, 182, , "Three2", 187, 180) 
-    else
-        FindImageAndClick(103, 177, 106, 181, , "Two2", 107, 180) 
-    adbClick_wbb(51, 297)
-    Delay(1)
+    SpeedmodEnableUnified()
     RemoveFriends()
     if(injectMethod && loadedAccount && !keepAccount) {
         MarkAccountAsUsed()
@@ -492,14 +486,7 @@ if(DeadCheck = 1 && deleteMethod != "Create Bots (13P)") {
         }
 
         Sleep, 4000 ; avoiding spam clicks at startup
-        FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000) 
-        if(setSpeed = 3)
-            FindImageAndClick(185, 177, 189, 182, , "Three2", 187, 180) 
-        else
-            FindImageAndClick(103, 177, 106, 181, , "Two2", 107, 180) 
-        Delay(1)
-        adbClick_wbb(51, 297)
-        Delay(1)
+        SpeedmodEnableUnified()
 
         cantOpenMorePacks := 0
         packsInPool := 0
@@ -1938,14 +1925,7 @@ menuDeleteStart() {
         return keepAccount
     }
     if(friended) {
-        FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000) 
-        if(setSpeed = 3)
-            FindImageAndClick(185, 177, 189, 182, , "Three2", 187, 180) 
-        else
-            FindImageAndClick(103, 177, 106, 181, , "Two2", 107, 180) 
-        Delay(1)
-        adbClick_wbb(51, 297)
-        Delay(1)
+        SpeedmodEnableUnified()
     }
     failSafe := A_TickCount
     failSafeTime := 0
@@ -2871,23 +2851,14 @@ DoTutorial() {
         failSafeTime := (A_TickCount - failSafe) // 1000
     }
 
-    if(setSpeed = 3){
-        FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000) 
-        FindImageAndClick(18, 177, 23, 181, , "One2", 26, 180) 
-        Delay(1)
-        adbClick_wbb(51, 297)
-        Delay(1)
+    if(setSpeed > 1){
+        SpeedmodDisableUnified()
     }
 
     FindImageAndClick(110, 230, 182, 257, , "Welcome", 253, 506, 110) ;click through cutscene until welcome page
 
-    if(setSpeed = 3){
-        FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000) 
-        FindImageAndClick(185, 177, 189, 182, , "Three2", 187, 180) 
-        Delay(1)
-        adbClick_wbb(51, 297)
-        Delay(1)
-    }
+    SpeedmodEnableUnified()
+
     FindImageAndClick(190, 241, 225, 270, , "Name", 189, 438) ;wait for name input screen
     /* ; Picks Erika at creation - disabled
     Delay(1)
@@ -2951,11 +2922,7 @@ DoTutorial() {
 
     FindImageAndClick(225, 273, 235, 290, , "Pack", 140, 424) ;wait for pack to be ready  to trace
     if(setSpeed > 1) {
-        FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000) 
-        FindImageAndClick(18, 177, 23, 181, , "One2", 26, 180) 
-        Delay(1)
-        adbClick_wbb(51, 297)
-        Delay(1)
+        SpeedmodDisableUnified()
     }
     failSafe := A_TickCount
     failSafeTime := 0
@@ -2963,16 +2930,7 @@ DoTutorial() {
         adbSwipe_wbb(adbSwipeParams)
         Sleep, 100
         if(FindOrLoseImage(225, 273, 235, 290, , "Pack", 1, failSafeTime)){
-            if(setSpeed > 1) {
-                if(setSpeed = 3) {
-                    FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000)
-                    FindImageAndClick(185, 177, 189, 182, , "Three2", 187, 180) ; click 3x
-                } else {
-                    FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000)
-                    FindImageAndClick(103, 177, 106, 181, , "Two2", 107, 180) ; click 2x
-                }
-            }
-            adbClick_wbb(51, 297)
+            SpeedmodEnableUnified()
             break
         }
         failSafeTime := (A_TickCount - failSafe) // 1000
@@ -2981,9 +2939,7 @@ DoTutorial() {
 
     FindImageAndClick(34, 99, 74, 131, , "Swipe", 140, 375) ;click through cards until needing to swipe up
     if(setSpeed > 1) {
-        FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000) 
-        FindImageAndClick(18, 177, 23, 181, , "One2", 26, 180) 
-        Delay(1)
+        SpeedmodDisableUnified()
     }
     failSafe := A_TickCount
     failSafeTime := 0
@@ -3050,11 +3006,7 @@ DoTutorial() {
 
     FindImageAndClick(225, 273, 235, 290, , "Pack", 239, 497) ;wait for pack to be ready  to Trace
     if(setSpeed > 1) {
-        FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000) 
-        FindImageAndClick(18, 177, 23, 181, , "One2", 26, 180) 
-        Delay(1)
-        adbClick_wbb(51, 297)
-        Delay(1)
+        SpeedmodDisableUnified()
     }
     failSafe := A_TickCount
     failSafeTime := 0
@@ -3062,16 +3014,7 @@ DoTutorial() {
         adbSwipe_wbb(adbSwipeParams)
         Sleep, 100
         if(FindOrLoseImage(225, 273, 235, 290, , "Pack", 1, failSafeTime)){
-            if(setSpeed > 1) {
-                if(setSpeed = 3) {
-                    FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000)
-                    FindImageAndClick(185, 177, 189, 182, , "Three2", 187, 180) 
-                } else {
-                    FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000)
-                    FindImageAndClick(103, 177, 106, 181, , "Two2", 107, 180) 
-                }
-            }
-            adbClick_wbb(51, 297)
+            SpeedmodEnableUnified()
             break
         }
         failSafeTime := (A_TickCount - failSafe) // 1000
@@ -3560,11 +3503,7 @@ PackOpening() {
     }
 
     if(setSpeed > 1) {
-        FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000) 
-        FindImageAndClick(18, 177, 23, 181, , "One2", 26, 180) 
-        Delay(1)
-        adbClick_wbb(51, 297)
-        Delay(1)
+        SpeedmodDisableUnified()
     }
     failSafe := A_TickCount
     failSafeTime := 0
@@ -3572,16 +3511,7 @@ PackOpening() {
         adbSwipe_wbb(adbSwipeParams)
         Sleep, 100
         if (FindOrLoseImage(225, 273, 235, 290, , "Pack", 1, failSafeTime)){
-            if(setSpeed > 1) {
-                if(setSpeed = 3) {
-                    FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000)
-                    FindImageAndClick(185, 177, 189, 182, , "Three2", 187, 180) 
-                } else {
-                    FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000)
-                    FindImageAndClick(103, 177, 106, 181, , "Two2", 107, 180) 
-                }
-            }
-            adbClick_wbb(51, 297)
+            SpeedmodEnableUnified()
             break
         }
         failSafeTime := (A_TickCount - failSafe) // 1000
@@ -3729,11 +3659,7 @@ HourglassOpening(HG := false, NEIRestart := true) {
     }
 
     if(setSpeed > 1) {
-        FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000) 
-        FindImageAndClick(18, 177, 23, 181, , "One2", 26, 180) 
-        Delay(1)
-        adbClick_wbb(51, 297)
-        Delay(1)
+        SpeedmodDisableUnified()
     }
     failSafe := A_TickCount
     failSafeTime := 0
@@ -3741,16 +3667,7 @@ HourglassOpening(HG := false, NEIRestart := true) {
         adbSwipe_wbb(adbSwipeParams)
         Sleep, 100
         if (FindOrLoseImage(225, 273, 235, 290, , "Pack", 1, failSafeTime)){
-            if(setSpeed > 1) {
-                if(setSpeed = 3) {
-                    FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000)
-                    FindImageAndClick(185, 177, 189, 182, , "Three2", 187, 180) 
-                } else {
-                    FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000)
-                    FindImageAndClick(103, 177, 106, 181, , "Two2", 107, 180) 
-                }
-            }
-            adbClick_wbb(51, 297)
+            SpeedmodEnableUnified()
             break
         }
         failSafeTime := (A_TickCount - failSafe) // 1000
@@ -4342,11 +4259,7 @@ OpenGiftPacks(){
 			Delay(1)
 
 			if(setSpeed > 1) {
-			FindImageAndClick(25, 145, 70, 170, , "speedmodMenu", 18, 109, 2000) ; click mod settings
-			FindImageAndClick(9, 170, 25, 190, , "One", 26, 180) ; click mod settings
-			Delay(1)
-			adbClick_wbb(41, 339)
-			Delay(1)
+			SpeedmodDisableUnified()
 			}
 			failSafe := A_TickCount
 			failSafeTime := 0
@@ -4354,16 +4267,7 @@ OpenGiftPacks(){
 				adbSwipe_wbb(adbSwipeParams)
 				Sleep, 5
 				if(FindOrLoseImage(225, 273, 235, 290, , "Pack", 1, failSafeTime)){
-					if(setSpeed > 1) {
-						if(setSpeed = 3) {
-							FindImageAndClick(25, 145, 70, 170, , "speedmodMenu", 18, 109, 2000)
-							FindImageAndClick(182, 170, 194, 190, , "Three", 187, 180) ; click 3x
-						} else {
-							FindImageAndClick(25, 145, 70, 170, , "speedmodMenu", 18, 109, 2000)
-							FindImageAndClick(100, 170, 113, 190, , "Two", 107, 180) ; click 2x
-						}
-					}
-					adbClick_wbb(41, 339)
+					SpeedmodEnableUnified()
 					
 					
 					
@@ -4421,6 +4325,36 @@ GoToMain(fromSocial := false) {
     else {
         FindImageAndClick(120, 500, 155, 530, , "Social", 143, 518)
         FindImageAndClick(191, 393, 211, 411, , "Shop", 20, 515, 500) ;click until at main menu
+    }
+}
+
+SpeedmodEnableUnified() {
+	if(setSpeed > 1){
+         FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000) ; click mod settings
+        ;FindImageAndClick(25, 145, 70, 170, , "speedmodMenu", 18, 109, 2000) ; old 9mod
+		if(setSpeed = 3)
+      FindImageAndClick(185, 177, 189, 182, , "Three2", 187, 180) ; click 3x
+			;FindImageAndClick(182, 170, 194, 190, , "Three", 187, 180) ; old 9mod
+		else
+      FindImageAndClick(103, 177, 106, 181, , "Two2", 107, 180) ; click 2x
+			;FindImageAndClick(100, 170, 113, 190, , "Two", 107, 180) ; old 9mod
+		;Delay(1)
+    adbClick_wbb(51, 297)
+		;adbClick_wbb(41, 339) ; old 9mod
+		Delay(1)
+    }
+}
+
+SpeedmodDisableUnified() {
+	if(setSpeed > 1){ ;often redundant in code - can remove for each call of SpeedmodDisableUnified()
+        FindImageAndClick(158, 252, 177, 259, , "speedmodMenu2", 18, 109, 2000) ; click mod settings
+        FindImageAndClick(18, 177, 23, 181, , "One2", 26, 180)  ; click mod settings
+        ;FindImageAndClick(25, 145, 70, 170, , "speedmodMenu", 18, 109, 2000) ; old 9mod
+        ;FindImageAndClick(9, 170, 25, 190, , "One", 26, 180) ; old 9mod
+        ;Delay(1)
+        adbClick_wbb(51, 297)
+        ;adbClick_wbb(41, 339) ; old 9mod
+        Delay(1)
     }
 }
 
