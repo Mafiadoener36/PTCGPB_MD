@@ -104,13 +104,13 @@ SetTitleMatchMode, 3
 
 OnError("ErrorHandler")
 
-githubUser := "kevnITG"
-   ,repoName := "PTCGPB"
-   ,localVersion := "v9.2.5"
+githubUser := "Mafiadoener36"
+   ,repoName := "PTCGPB_MD"
+   ,localVersion := "v9.2.5.4"
    ,scriptFolder := A_ScriptDir
    ,zipPath := A_Temp . "\update.zip"
    ,extractPath := A_Temp . "\update"
-   ,intro := "Crimson Blaze"
+   ,intro := "ClaimGiftsPacks"
 
 global GUI_WIDTH := 790
 global GUI_HEIGHT := 370
@@ -3071,5 +3071,6 @@ KillAllScripts() {
 
    Return
 }
+
 
 
